@@ -6,6 +6,7 @@ description       "Installs Python, pip and virtualenv. Includes LWRPs for manag
 version           "1.2.2"
 
 depends           "build-essential"
+#depends           "yum"
 
 recipe "python", "Installs python, pip, and virtualenv"
 recipe "python::package", "Installs python using packages."
