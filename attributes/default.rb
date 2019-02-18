@@ -21,7 +21,7 @@
 default['python']['install_method'] = 'package'
 
 if default['python']['install_method'] == 'package'
-  case platform
+  case platform_family?
   when "smartos"
     default['python']['prefix_dir']         = '/opt/local'
   else
