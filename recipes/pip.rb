@@ -30,7 +30,7 @@ end
 # are broken...this feels like Rubygems!
 # http://stackoverflow.com/questions/4324558/whats-the-proper-way-to-install-pip-virtualenv-and-distribute-for-python
 # https://bitbucket.org/ianb/pip/issue/104/pip-uninstall-on-ubuntu-linux
-remote_file "#{Chef::Config[:file_cache_path]}/get-pip.py" do
+remote_file "/opt/local/get-pip.py" do
   source "https://bootstrap.pypa.io/get-pip.py"
   mode "0644"
   not_if { ::File.exists?(pip_binary) }
@@ -39,7 +39,7 @@ end
 execute "install-pip" do
   cwd Chef::Config[:file_cache_path]
   command <<-EOF
-  #{node['python']['binary']} #{Chef::Config[:file_cache_path]}/get-pip.py.py
+  #{node['python']['binary']} /opt/local/get-pip.py.py
   #{::File.dirname(pip_binary)}/easy_install pip
   EOF
   not_if { ::File.exists?(pip_binary) }
